@@ -103,7 +103,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -116,44 +115,72 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">화재감지 영상 보기</h1>
-                    <p class="mb-4">화재가 감지된 영상을 볼 수 있는 페이지 입니다.
-                        <br>원하는 날짜를 골라 화재영상을 열람할 수 있습니다.
-                    </p>
+                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
+                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme.
+                        The charts below have been customized - for further customization options, please visit the <a
+                            target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
+                            documentation</a>.</p>
 
                     <!-- Content Row -->
-                    <div>
-                        <!-- Border Left Utilities -->
-                        <div class="card mb-4 py-3 border-bottom-danger">
-                            <div class="card-body">
-                                {{ static_url }}
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the area chart can be found in the
+                                    <code>/js/demo/chart-area-demo.js</code> file.
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <b>&nbsp; date : &nbsp;</b>
-                                <select name="job">
-                                    <option value="">2020-12-12</option>
-                                </select>
-                                &nbsp;
-                                <b>&nbsp; time : &nbsp;</b>
-                                <select name="job">
-                                    <option value="">00:00:00</option>
-                                </select>
+
+                            <!-- Bar Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the bar chart can be found in the
+                                    <code>/js/demo/chart-bar-demo.js</code> file.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the donut chart can be found in the
+                                    <code>/js/demo/chart-pie-demo.js</code> file.
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div style="border: 1px solid gold;">
-                        <div class="card mb-4 py-3 border-bottom-danger">
-                            <div class="card-body" >
-                                {{ static_url }}
-                            </div>
-                            <div class="card-body" style="border: 1px solid gold;">
-                                <img src="{{ static_url }}" style="display: block; margin-left: auto; margin-right: auto;">
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
 
@@ -207,6 +234,14 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-bar-demo.js' %}"></script>
 
 </body>
 

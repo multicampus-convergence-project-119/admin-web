@@ -5,7 +5,7 @@ import boto3
 def index(request):
     return render(request, 'mainapp/index.html')
 
-def video(request):
+def video(request): # 화재감지영상보기
     # AWS_REGION = 'us-east-1'
     AWS_STORAGE_BUCKET_NAME = 'fire-video-s3'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -14,3 +14,11 @@ def video(request):
     VIDEO_URL = 'https://%s/%s/%s' % (AWS_S3_CUSTOM_DOMAIN, DATETIME, FILENAME)
     content = {'static_url': VIDEO_URL }
     return render(request, 'mainapp/video-view.html', content)
+
+
+
+def mapview(request): # 지도시각화
+    return render(request, 'mainapp/mapview.html')
+
+def realtime(request): # 실시간 그래프
+    return render(request, 'mainapp/realtime.html')
