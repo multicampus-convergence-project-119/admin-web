@@ -35,8 +35,6 @@ def mapview(request): # 빅데이터 지도시각화
     return render(request, 'mainapp/mapview.html', None)
 def maptest(request):
     return render(request, 'mainapp/map_object.html', None)
-# def mapview(request): 
-#     return render(request, 'mainapp/mapview.html')
 
 # 실시간 그래프
 def realtime(request): 

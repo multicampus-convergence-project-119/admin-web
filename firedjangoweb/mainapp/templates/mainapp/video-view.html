@@ -113,7 +113,6 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
@@ -131,14 +130,27 @@
                             </div>
                             <div class="card-body">
                                 <b>&nbsp; date : &nbsp;</b>
-                                <select name="job">
-                                    <option value="">2020-12-12</option>
+                                <!-- <form action="{% url 'video' %}" method="post"> -->
+                                <select name="seldate">
+                                    {% for key in datetimelist.keys %}
+                                    <option name="DATE" value="{{key}}" id="{{key}}">{{key}}</option>
+                                    {% endfor %}
                                 </select>
+                                <script>
+                                    var times = "{{ datetimelist.keys }}";
+                                    var sel = $("#seldate option:selected").val()
+                                    var times = "{{ datetimelist }}";
+                                    for (var t in times[sel]){
+                                        $("#times").append("<option> '123' </option>")
+                                    }
+                                </script>
                                 &nbsp;
+                                {% with d=key %}
                                 <b>&nbsp; time : &nbsp;</b>
-                                <select name="job">
-                                    <option value="">00:00:00</option>
+                                <select id="times" name="job">
+                                    <!-- <option value="">{{d}}</option> -->
                                 </select>
+                                {% endwith %}
                             </div>
                         </div>
                     </div>
