@@ -24,7 +24,7 @@
 </head>
 
 <body id="page-top">
-
+    
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -126,42 +126,32 @@
                         <!-- Border Left Utilities -->
                         <div class="card mb-4 py-3 border-bottom-danger">
                             <div class="card-body">
-                                {{ static_url }}
-                            </div>
-                            <div class="card-body">
-                                <b>&nbsp; date : &nbsp;</b>
-                                <!-- <form action="{% url 'video' %}" method="post"> -->
-                                <select name="seldate">
-                                    {% for key in datetimelist.keys %}
-                                    <option name="DATE" value="{{key}}" id="{{key}}">{{key}}</option>
-                                    {% endfor %}
-                                </select>
-                                <script>
-                                    var times = "{{ datetimelist.keys }}";
-                                    var sel = $("#seldate option:selected").val()
-                                    var times = "{{ datetimelist }}";
-                                    for (var t in times[sel]){
-                                        $("#times").append("<option> '123' </option>")
-                                    }
-                                </script>
+                                <form action="{% url 'video' %}" method="post">
+                                    {% csrf_token %}
+                                    <b>&nbsp; date : &nbsp;</b>
+                                    <select name="select1" style="width: 250px;">
+                                        {% for key in datetimelist %}
+                                        <option name="DATE" value="{{key}}" id="{{key}}">{{key}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="submit">조회</button>
+                                </form>
                                 &nbsp;
-                                {% with d=key %}
-                                <b>&nbsp; time : &nbsp;</b>
-                                <select id="times" name="job">
-                                    <!-- <option value="">{{d}}</option> -->
-                                </select>
-                                {% endwith %}
                             </div>
                         </div>
                     </div>
 
-                    <div style="border: 1px solid gold;">
+                    <div>
                         <div class="card mb-4 py-3 border-bottom-danger">
-                            <div class="card-body" >
-                                {{ static_url }}
-                            </div>
                             <div class="card-body" style="border: 1px solid gold;">
-                                <img src="{{ static_url }}" style="display: block; margin-left: auto; margin-right: auto;">
+                                <!-- style="border: 1px solid gold; display: block; margin-left: auto; margin-right: auto;" -->
+                                <video controls muted autoplay style="max-width: 80%; display: block; margin: 20px auto;">
+                                    <source src="{{ static_url }}" type="video/avi" > 
+                                </video>
+                            </div>
+                            <div class="card-body" >
+                                <b>dowload link : &nbsp;&nbsp;</b> {{ static_url }}
                             </div>
                         </div>
                     </div>
@@ -221,6 +211,9 @@
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
 
+    <script>
+        
+    </script>
 </body>
 
 </html>
