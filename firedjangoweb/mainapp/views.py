@@ -23,7 +23,7 @@ def video(request):
         DATE = parse.quote(str(idd[:8])) # url 형식으로 바꾸어 주기
         TIME = parse.quote(str(idd[9:]))
         print(idd[:9], idd[10:])
-        FILENAME = 'video.avi'
+        FILENAME = 'video.mp4'
         VIDEO_URL = 'https://%s/%s+%s/%s' % (AWS_S3_CUSTOM_DOMAIN, DATE, TIME, FILENAME)
         content = {'static_url': VIDEO_URL,
         'datetimelist':filed}  
