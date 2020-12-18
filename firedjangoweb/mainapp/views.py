@@ -3,8 +3,15 @@ from urllib import parse
 import boto3
 
 # AWS S3 버킷 설정
+AWS_ACCESS_KEY_ID = "AKIASUE2ARX5YERT4X2Y"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_DEFAULT_REGION = "us-east-1"
+
 s3_bucket_name = 'fire-video-s3'
-s3 = boto3.client('s3')
+s3 = boto3.client('s3',
+    region_name=AWS_DEFAULT_REGION,
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
 # AWS S3 end
 
@@ -26,9 +33,9 @@ def video(request):
         FILENAME = 'video.mp4'
         VIDEO_URL = 'https://%s/%s+%s/%s' % (AWS_S3_CUSTOM_DOMAIN, DATE, TIME, FILENAME)
         content = {'static_url': VIDEO_URL,
-        'datetimelist':filed}  
+        'datetimelist':filed , 'datetime':idd, 'DATE':DATE, 'TIME':str(idd[9:])}  
         return render(request, 'mainapp/video-view.html', content)
-    return render(request, 'mainapp/video-view.html', {'datetimelist':filed})
+    return render(request, 'mainapp/video-view.html', {'datetimelist':filed, 'static_url':1})
 
 
 # 지도시각화

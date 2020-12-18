@@ -128,8 +128,8 @@
                             <div class="card-body">
                                 <form action="{% url 'video' %}" method="post">
                                     {% csrf_token %}
-                                    <b>&nbsp; date : &nbsp;</b>
-                                    <select name="select1" style="width: 250px;">
+                                    <b>&nbsp; datetime : &nbsp;</b>
+                                    <select name="select1" style="width: 250px;" >
                                         {% for key in datetimelist %}
                                         <option name="DATE" value="{{key}}" id="{{key}}">{{key}}</option>
                                         {% endfor %}
@@ -144,14 +144,16 @@
 
                     <div>
                         <div class="card mb-4 py-3 border-bottom-danger">
-                            <div class="card-body" style="border: 1px solid gold;">
+                            <div class="card-body" >
                                 <!-- style="border: 1px solid gold; display: block; margin-left: auto; margin-right: auto;" -->
+                                {% if static_url == 1 %}
+                                    <b> 날짜와 시간을 선택해주세요. </b>
+                                {% else %}
+                                <b> 날짜 : </b>  {{DATE}} &nbsp;&nbsp;  <b>시간 : </b>  {{TIME}} 
                                 <video controls preload='auto' autoplay style="max-width: 80%; display: block; margin: 20px auto;">
                                     <source src="{{ static_url }}" type="video/mp4" > 
                                 </video>
-                            </div>
-                            <div class="card-body" >
-                                <b>dowload link : &nbsp;&nbsp;</b> {{ static_url }}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
