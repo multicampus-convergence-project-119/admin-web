@@ -1,11 +1,8 @@
 from django.shortcuts import render
 from urllib import parse
 import boto3
+from .awsconfig import *
 
-# AWS S3 버킷 설정
-AWS_ACCESS_KEY_ID = "AKIASUE2ARX5YERT4X2Y"
-AWS_SECRET_ACCESS_KEY = "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"
-AWS_DEFAULT_REGION = "us-east-1"
 
 s3_bucket_name = 'fire-video-s3'
 s3 = boto3.client('s3',
